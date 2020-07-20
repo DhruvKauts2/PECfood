@@ -18,9 +18,10 @@ class _HomeState extends State<Home> {
       constraints: BoxConstraints.expand(),
       decoration: BoxDecoration(
           image: DecorationImage(
+              colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.6), BlendMode.dstATop),
               image: NetworkImage(
-                  "https://st2.depositphotos.com/3731481/7824/v/950/depositphotos_78244412-stock-illustration-seamless-background-with-cute-hand.jpg"),
-              fit: BoxFit.cover)
+                  "https://st2.depositphotos.com/2786775/7446/v/450/depositphotos_74461411-stock-illustration-black-food-and-drink-signs.jpg"),
+              fit: BoxFit.cover,)
       ),
         child:
           new Row(
@@ -33,7 +34,7 @@ class _HomeState extends State<Home> {
                 borderRadius: BorderRadius.circular(75.0),
                   side: BorderSide(color: Colors.white),
               ),
-              buttonColor: Colors.black,
+              buttonColor: Color(0xff81B29A),
             minWidth: 175.0,
             height: 75.0,
             child: RaisedButton(
@@ -42,7 +43,7 @@ class _HomeState extends State<Home> {
                   return LoginPage();
                 }));
               },
-              child: Text("Log in",style: TextStyle(color : Colors.white, fontSize: 30) ),
+              child: Text("Log in",style: TextStyle(color : Colors.white, fontSize: 27, fontFamily: 'Quicksand', fontWeight: FontWeight.bold) ),
             ),
           ),
 
@@ -51,7 +52,7 @@ class _HomeState extends State<Home> {
             borderRadius: BorderRadius.circular(75.0),
               side: BorderSide(color: Colors.white),
           ),
-          buttonColor: Colors.black,
+          buttonColor: Color(0xff81B29A),
           minWidth: 175.0,
           height: 75.0,
           child:
@@ -59,7 +60,7 @@ class _HomeState extends State<Home> {
             onPressed: () {
               
             },
-            child: Text("Sign Up",style: TextStyle(color : Colors.white, fontSize: 30),  ),
+            child: Text("Sign Up",style: TextStyle(color : Colors.white, fontSize: 27, fontFamily: 'Quicksand', fontWeight: FontWeight.bold),  ),
           ),
         ),
             ],

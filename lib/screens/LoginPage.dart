@@ -25,10 +25,12 @@ class _LoginPageState extends State<LoginPage> {
         .headline6;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Authenticate bitch'),
-        backgroundColor: Colors.black,
-      ),
+      appBar: PreferredSize(preferredSize: Size.fromHeight(65),
+      child: AppBar(
+        title: Text('Login', style: TextStyle( color: Color(0xff3D405B), fontFamily: 'Pacifico', fontSize: 40,),),
+        backgroundColor: Color(0xffF2CC8F),
+        centerTitle: true,
+      ),),
       body: Form(
         key: _formKey,
         child: Padding(
@@ -37,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
               children: <Widget>[
                 Padding(
                     padding: EdgeInsets.only(
-                        top: 8.0, bottom: 8.0),
+                        top: 70.0, bottom: 20.0),
                     child: TextFormField(
                       style: textStyle,
                       controller: usernameController,
@@ -59,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                     )),
                 Padding(
                     padding: EdgeInsets.only(
-                        top: 8.0, bottom: 8.0),
+                        top: 10.0, bottom: 20.0),
                     child: TextFormField(
                       style: textStyle,
                       controller: sidController,
@@ -81,7 +83,7 @@ class _LoginPageState extends State<LoginPage> {
                     )),
                 Padding(
                     padding: EdgeInsets.only(
-                        top: 8.0, bottom: 8.0),
+                        top: 10.0, bottom: 20.0),
                     child: Row(
                       children: <Widget>[
                         Expanded(
@@ -105,24 +107,17 @@ class _LoginPageState extends State<LoginPage> {
                                       borderRadius: BorderRadius.circular(
                                           5.0))),
                             )),
-                        Container(
-                          width: 8.0 * 5,
-                        ),
                       ],
                     )),
                 Padding(
                     padding: EdgeInsets.only(
-                        bottom: 8.0, top: 8.0),
+                        bottom: 8.0, top: 50.0),
                     child: Row(
                       children: <Widget>[
                         Expanded(
                           child: RaisedButton(
-                            color: Theme
-                                .of(context)
-                                .accentColor,
-                            textColor: Theme
-                                .of(context)
-                                .primaryColorDark,
+                            color: Color(0xffF2CC8F),
+                            textColor: Color(0xff3D405B),
                             child: Text(
                               'Submit',
                               textScaleFactor: 1.5,
@@ -146,12 +141,8 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         Expanded(
                           child: RaisedButton(
-                            color: Theme
-                                .of(context)
-                                .primaryColorDark,
-                            textColor: Theme
-                                .of(context)
-                                .primaryColorLight,
+                            color: Color(0xff3D405B),
+                            textColor: Color(0xffF2CC8F),
                             child: Text(
                               'Reset',
                               textScaleFactor: 1.5,
@@ -165,8 +156,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                       ],
                     )),
-
-              ],
+                ],
             )),
       ),
     );

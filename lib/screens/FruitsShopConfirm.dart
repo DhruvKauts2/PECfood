@@ -1,20 +1,21 @@
 import 'package:flutter/material.dart';
 import 'food.dart';
 
-class JuiceCornerConfirm extends StatefulWidget {
+class FruitsShopConfirm extends StatefulWidget {
   final Food food;
-  JuiceCornerConfirm({ this.food });
+  FruitsShopConfirm({ this.food });
 
   @override
-  _JuiceCornerConfirmState createState() => _JuiceCornerConfirmState();
+  _FruitsShopConfirmState createState() => _FruitsShopConfirmState();
 }
 
-class _JuiceCornerConfirmState extends State<JuiceCornerConfirm> {
+class _FruitsShopConfirmState extends State<FruitsShopConfirm> {
+
   @override
   Widget build(BuildContext context) {
     return Card(
       margin: EdgeInsets.fromLTRB(36, 16, 36, 0),
-      color: Color(0xffffddd2),
+      color: Color(0xffF4E5C3),
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
@@ -27,14 +28,14 @@ class _JuiceCornerConfirmState extends State<JuiceCornerConfirm> {
                   widget.food.item,
                   style: TextStyle(
                     fontSize: 22.0,
-                    color: Color(0xff006d77),
+                    color: Color(0xff3D405B),
                   ),
                 ),
 
                 Text(
                   widget.food.quantity.toString(),
                   style: TextStyle(
-                    color: Color(0xff006d77),
+                    color: Color(0xff3D405B),
                     fontSize: 18,
                   ),
                 ),
@@ -48,14 +49,14 @@ class _JuiceCornerConfirmState extends State<JuiceCornerConfirm> {
                   'Rs ' + widget.food.rate.toString(),
                   style: TextStyle(
                     fontSize: 18.0,
-                    color: Color(0xff83c5be),
+                    color: Color(0xffE07A5F),
                   ),
                 ),
                 Text(
                   'Rs ' + widget.food.amount.toString(),
                   style: TextStyle(
                     fontSize: 18.0,
-                    color: Color(0xff83c5be),
+                    color: Color(0xffE07A5F),
                   ),
                 ),
               ],
@@ -64,5 +65,6 @@ class _JuiceCornerConfirmState extends State<JuiceCornerConfirm> {
         ),
       ),
     );
+
   }
 }

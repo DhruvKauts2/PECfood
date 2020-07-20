@@ -10,9 +10,11 @@ class Anna extends StatefulWidget {
   _CartState createState() => _CartState();
 }
 
+List<Food> foods = [Food('Plain Dosa', 40, 0), Food('Masala Dosa', 60, 0), Food('Idli', 40, 0), Food('Vada', 40, 0), Food('Onion Uttapam', 60, 0)];
+
 class _CartState extends State<Anna> {
 
-  List<Food> foods = [Food('Plain Dosa', 40, 0), Food('Masala Dosa', 60, 0), Food('Idli', 40, 0), Food('Vada', 40, 0), Food('Onion Uttapam', 60, 0)];
+  //List<Food> foods = [Food('Plain Dosa', 40, 0), Food('Masala Dosa', 60, 0), Food('Idli', 40, 0), Food('Vada', 40, 0), Food('Onion Uttapam', 60, 0)];
   int total = 0;
 
   @override
@@ -22,15 +24,13 @@ class _CartState extends State<Anna> {
       foods.forEach((food) {total += food.amount;});
     });
     return Scaffold(
-      backgroundColor: Color(0xffedf6f9),
-      appBar: AppBar(
-        title: Text(
-          'My Cart',
-          style: TextStyle(
-            fontSize: 28,
-          ),),
-        centerTitle: true,
-        backgroundColor: Color(0xffe29578),
+      backgroundColor: Color(0xffF4F1DE),
+      appBar: PreferredSize(preferredSize: Size.fromHeight(70),
+        child: AppBar(
+          title: Text('My Cart', style: TextStyle( color: Color(0xffF2CC8F), fontFamily: 'Pacifico', fontSize: 40,),),
+          backgroundColor: Color(0xff81B29B),
+          centerTitle: true,
+        ),
       ),
       bottomNavigationBar: BottomAppBar(
         child: Padding(
@@ -52,15 +52,16 @@ class _CartState extends State<Anna> {
                   );
                 },
                 elevation: 8,
-                color: Color(0xff006d77),
+                color: Color(0xffF2CC8F),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
                   'Continue',
                   style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
+                    fontSize: 20,
+                    fontFamily: 'Pacifico',
+                    color: Color(0xff3D405B),
                   ),
                 ),
               ),
@@ -74,11 +75,6 @@ class _CartState extends State<Anna> {
         itemBuilder: (context, index) {
           return AnnaCart(
             food: foods[index],
-            delete: () {
-              setState(() {
-                foods.remove(foods[index]);
-              });
-            },
             updateTotal: () {
               setState(() {
                 foods.forEach((food) {total += food.amount;});
@@ -95,26 +91,33 @@ class _CartState extends State<Anna> {
 
 class Confirm extends StatelessWidget {
 
-  List<Food> foods = [Food('Plain Dosa', 40, 2), Food('Masala Dosa', 60, 3), Food('Idli', 40, 1), Food('Vada', 40, 2), Food('Onion Uttapam', 80, 1),];
+  //List<Food> foods = [Food('Rajma Chawal', 60, 2), Food('Dal + Naan', 60, 3), Food('Paneer + Naan', 60, 1), Food('Veg Momos', 50, 2), Food('Maggi', 30, 1)];
+  int total = 0;
 
   @override
   Widget build(BuildContext context) {
+    foods.forEach((food) {total += food.amount;});
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xffe29578),
-        centerTitle: true,
-        title: Text(
-          "Confirm Your Order",
-          style: TextStyle(
-            fontSize: 28,
-          ),),
+      backgroundColor: Color(0xffF4F1DE),
+      appBar: PreferredSize(preferredSize: Size.fromHeight(70),
+        child: AppBar(
+          title: Text('Confirm Order', style: TextStyle( color: Color(0xffF2CC8F), fontFamily: 'Pacifico', fontSize: 40,),),
+          backgroundColor: Color(0xff81B29B),
+          centerTitle: true,
+        ),
       ),
       bottomNavigationBar: BottomAppBar(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(36,10,36,10),
+          padding: const EdgeInsets.fromLTRB(20,8,20,8),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
+              Text(
+                'Total = Rs ' + total.toString(),
+                style: TextStyle(
+                  fontSize: 24,
+                  color: Colors.white,
+                ),),
               RaisedButton(
                 onPressed: (){
                   Navigator.pushReplacement(
@@ -123,15 +126,16 @@ class Confirm extends StatelessWidget {
                   );
                 },
                 elevation: 8,
-                color: Color(0xff006d77),
+                color: Color(0xffF2CC8F),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
-                  'Go Back',
+                  'Back',
                   style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
+                    fontSize: 19,
+                    fontFamily: 'Pacifico',
+                    color: Color(0xff3D405B),
                   ),
                 ),
               ),
@@ -139,18 +143,18 @@ class Confirm extends StatelessWidget {
                 onPressed: (){
                   Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => OrderPlaced()));
-                },
+                      MaterialPageRoute(builder: (context) => OrderPlaced()));},
                 elevation: 8,
-                color: Color(0xff006d77),
+                color: Color(0xffF2CC8F),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
-                  'Confirm',
+                  'Continue',
                   style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
+                    fontSize: 19,
+                    fontFamily: 'Pacifico',
+                    color: Color(0xff3D405B),
                   ),
                 ),
               ),
@@ -174,3 +178,4 @@ class Confirm extends StatelessWidget {
 
 
 // ignore: camel_case_types
+

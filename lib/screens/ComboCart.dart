@@ -4,8 +4,7 @@ import 'food.dart';
 class ComboCart extends StatefulWidget {
   final Food food;
   final Function updateTotal;
-  final Function delete;
-  ComboCart({ this.food, this.delete, this.updateTotal});
+  ComboCart({ this.food, this.updateTotal});
 
   @override
   _ComboCartState createState() => _ComboCartState();
@@ -16,7 +15,7 @@ class _ComboCartState extends State<ComboCart> {
   Widget build(BuildContext context) {
     return Card(
       margin: EdgeInsets.fromLTRB(36, 16, 36, 0),
-      color: Color(0xffffddd2),
+      color: Color(0xffF4E5C3),
       child: Padding(
         padding: const EdgeInsets.all(10.0),
         child: Column(
@@ -29,7 +28,7 @@ class _ComboCartState extends State<ComboCart> {
                   widget.food.item,
                   style: TextStyle(
                     fontSize: 22.0,
-                    color: Color(0xff006d77),
+                    color: Color(0xff3D405B),
                   ),
                 ),
                 ButtonBar(
@@ -51,12 +50,12 @@ class _ComboCartState extends State<ComboCart> {
                           color: Colors.white,
                         ),
                       ),
-                      color: Color(0x80e29578),
+                      color: Color(0xff3D405B),
                     ),
                     Text(
                       widget.food.quantity.toString(),
                       style: TextStyle(
-                        color: Color(0xff006d77),
+                        color: Color(0xff3D405B),
                         fontSize: 18,
                       ),
                     ),
@@ -67,9 +66,6 @@ class _ComboCartState extends State<ComboCart> {
                           widget.food.amount = widget.food.rate * widget.food.quantity;
                           widget.updateTotal();
                         });
-                        if(widget.food.quantity == 0) {
-                          widget.delete();
-                        }
                       },
                       child: Text(
                         '-',
@@ -78,7 +74,7 @@ class _ComboCartState extends State<ComboCart> {
                           color: Colors.white,
                         ),
                       ),
-                      color: Color(0x80e29578),
+                      color: Color(0xff3D405B),
                     ),
                   ],
                 ),
@@ -92,14 +88,14 @@ class _ComboCartState extends State<ComboCart> {
                   'Rs ' + widget.food.rate.toString(),
                   style: TextStyle(
                     fontSize: 18.0,
-                    color: Color(0xff83c5be),
+                    color: Color(0xffE07A5F),
                   ),
                 ),
                 Text(
                   'Rs ' + widget.food.amount.toString(),
                   style: TextStyle(
                     fontSize: 18.0,
-                    color: Color(0xff83c5be),
+                    color: Color(0xffE07A5F),
                   ),
                 ),
               ],

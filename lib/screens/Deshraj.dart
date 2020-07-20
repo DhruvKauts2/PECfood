@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:login_app/screens/OrderPlaced.dart';
 
 import 'DeshrajCart.dart';
 import 'DeshrajConfirm.dart';
-import 'OrderPlaced.dart';
 import 'food.dart';
 
 class Deshraj extends StatefulWidget {
@@ -10,9 +10,10 @@ class Deshraj extends StatefulWidget {
   _CartState createState() => _CartState();
 }
 
+List<Food> foods = [Food('Chana Samosa', 30, 0), Food('Chai', 10, 0), Food('Coffee', 20, 0), Food('Patty', 40, 0), Food('Bread Butter', 20, 0)];
+
 class _CartState extends State<Deshraj> {
 
-  List<Food> foods = [Food('Chana Samosa', 30, 0), Food('Chai', 10, 0), Food('Coffee', 20, 0), Food('Patty', 40, 0), Food('Bread Butter', 20, 0)];
   int total = 0;
 
   @override
@@ -22,16 +23,13 @@ class _CartState extends State<Deshraj> {
       foods.forEach((food) {total += food.amount;});
     });
     return Scaffold(
-      backgroundColor: Color(0xffedf6f9),
-      appBar: AppBar(
-
-        title: Text(
-          'My Cart',
-          style: TextStyle(
-            fontSize: 28,
-          ),),
-        centerTitle: true,
-        backgroundColor: Color(0xffe29578),
+      backgroundColor: Color(0xffF4F1DE),
+      appBar: PreferredSize(preferredSize: Size.fromHeight(70),
+        child: AppBar(
+          title: Text('My Cart', style: TextStyle( color: Color(0xffF2CC8F), fontFamily: 'Pacifico', fontSize: 40,),),
+          backgroundColor: Color(0xff81B29B),
+          centerTitle: true,
+        ),
       ),
       bottomNavigationBar: BottomAppBar(
         child: Padding(
@@ -53,15 +51,16 @@ class _CartState extends State<Deshraj> {
                   );
                 },
                 elevation: 8,
-                color: Color(0xff006d77),
+                color: Color(0xffF2CC8F),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
                   'Continue',
                   style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
+                    fontSize: 20,
+                    fontFamily: 'Pacifico',
+                    color: Color(0xff3D405B),
                   ),
                 ),
               ),
@@ -75,11 +74,6 @@ class _CartState extends State<Deshraj> {
         itemBuilder: (context, index) {
           return DeshrajCart(
             food: foods[index],
-            delete: () {
-              setState(() {
-                foods.remove(foods[index]);
-              });
-            },
             updateTotal: () {
               setState(() {
                 foods.forEach((food) {total += food.amount;});
@@ -96,26 +90,32 @@ class _CartState extends State<Deshraj> {
 
 class Confirm extends StatelessWidget {
 
-  List<Food> foods = [Food('Chana Samosa', 30, 2), Food('Chai', 10, 3), Food('Coffee', 20, 1), Food('Patty', 40, 2), Food('Bread Butter', 20, 1)];
+  int total = 0;
 
   @override
   Widget build(BuildContext context) {
+    foods.forEach((food) {total += food.amount;});
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color(0xffe29578),
-        centerTitle: true,
-        title: Text(
-          "Confirm Your Order",
-          style: TextStyle(
-            fontSize: 28,
-          ),),
+      backgroundColor: Color(0xffF4F1DE),
+      appBar: PreferredSize(preferredSize: Size.fromHeight(70),
+        child: AppBar(
+          title: Text('Confirm Order', style: TextStyle( color: Color(0xffF2CC8F), fontFamily: 'Pacifico', fontSize: 40,),),
+          backgroundColor: Color(0xff81B29B),
+          centerTitle: true,
+        ),
       ),
       bottomNavigationBar: BottomAppBar(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(36,10,36,10),
+          padding: const EdgeInsets.fromLTRB(20,8,20,8),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
+              Text(
+                'Total = Rs ' + total.toString(),
+                style: TextStyle(
+                  fontSize: 24,
+                  color: Colors.white,
+                ),),
               RaisedButton(
                 onPressed: (){
                   Navigator.pushReplacement(
@@ -124,33 +124,35 @@ class Confirm extends StatelessWidget {
                   );
                 },
                 elevation: 8,
-                color: Color(0xff006d77),
+                color: Color(0xffF2CC8F),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
-                  'Go Back',
+                  'Back',
                   style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
+                    fontSize: 19,
+                    fontFamily: 'Pacifico',
+                    color: Color(0xff3D405B),
                   ),
                 ),
               ),
               RaisedButton(
                 onPressed: (){
                   Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(builder: (context) => OrderPlaced()));},
+                      context,
+                      MaterialPageRoute(builder: (context) => OrderPlaced()));},
                 elevation: 8,
-                color: Color(0xff006d77),
+                color: Color(0xffF2CC8F),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Text(
-                  'Confirm',
+                  'Continue',
                   style: TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
+                    fontSize: 19,
+                    fontFamily: 'Pacifico',
+                    color: Color(0xff3D405B),
                   ),
                 ),
               ),
@@ -174,3 +176,4 @@ class Confirm extends StatelessWidget {
 
 
 // ignore: camel_case_types
+
